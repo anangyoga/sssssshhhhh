@@ -3,6 +3,12 @@ import LogoIcon from "./assets/message.svg";
 const App = () => {
   return (
     <main>
+      <nav className="flex sm:justify-end justify-center bg-green-400 py-2">
+        <div className="mr-10 flex gap-x-5 text-sm text-white font-semibold">
+          <button className="bg-white/40 rounded-sm px-2 py-1 hover:opacity-80">Log In</button>
+          <button className="bg-white/40 rounded-sm px-2 py-1 hover:opacity-80">Register</button>
+        </div>
+      </nav>
       <section className="flex flex-col gap-y-6 max-w-xl py-6 sm:mx-auto bg-gray-100 shadow-md rounded-sm my-3 mx-2">
         <div className="flex flex-col items-center gap-y-2">
           <img src={LogoIcon} alt="message-icon" className="w-10 h-w-10" />
