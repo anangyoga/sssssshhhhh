@@ -17,6 +17,22 @@ const App = () => {
           </form>
         </div>
       </section>
+      <section className="flex flex-col gap-y-6 max-w-xl py-6 sm:mx-auto">
+        <h2 className="text-lg font-semibold">Anonymous Messages for Fulan</h2>
+        <div className="flex flex-col gap-y-4 bg-gray-50 shadow-md rounded-sm py-3 px-2">
+          <div className="bg-white px-2 py-3 rounded-sm shadow-sm">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse libero autem earum dolor corrupti, quaerat asperiores obcaecati dolorum harum veritatis voluptatibus ab, illum officiis?</p>
+          </div>
+          <div className="bg-white px-2 py-3 rounded-sm shadow-sm">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur error deserunt distinctio.</p>
+          </div>
+          <div className="bg-white px-2 py-3 rounded-sm shadow-sm">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet totam rem excepturi quam facilis ullam pariatur voluptates. Perspiciatis excepturi repellat aperiam alias sequi sapiente expedita omnis quam vitae repellendus?
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };
