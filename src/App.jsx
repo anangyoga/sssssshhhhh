@@ -1,5 +1,3 @@
-import LogoIcon from "./assets/message.svg";
-
 const App = () => {
   return (
     <main>
@@ -9,33 +7,53 @@ const App = () => {
           <button className="bg-white/40 rounded-sm px-2 py-1 hover:opacity-80">Register</button>
         </div>
       </nav>
-      <section className="flex flex-col gap-y-6 max-w-xl py-6 sm:mx-auto bg-gray-100 shadow-md rounded-sm my-3 mx-2">
-        <div className="flex flex-col items-center gap-y-2">
-          <img src={LogoIcon} alt="message-icon" className="w-10 h-w-10" />
-          <p className="text-green-600 text-lg font-semibold">Send Anonymous Message!</p>
-        </div>
-        <div className="flex flex-col items-center">
-          <form className="flex flex-col gap-y-2 w-4/5 text-green-600">
-            <input type="text" placeholder="write your message..." className="p-2 h-8 rounded-sm  border-none focus:outline-none" />
-            <button type="submit" className="bg-green-500 text-white py-1 rounded-sm font-semibold">
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section>
-      <section className="flex flex-col gap-y-6 max-w-xl py-6 sm:mx-auto">
-        <h2 className="text-lg font-semibold">Anonymous Messages for Fulan</h2>
-        <div className="flex flex-col gap-y-4 bg-gray-50 shadow-md rounded-sm py-3 px-2">
-          <div className="bg-white px-2 py-3 rounded-sm shadow-sm">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse libero autem earum dolor corrupti, quaerat asperiores obcaecati dolorum harum veritatis voluptatibus ab, illum officiis?</p>
+      <section className="mx-auto my-2 max-w-7xl">
+        <h2 className="text-lg font-semibold my-3">Dashboard</h2>
+        <div className="flex flex-col gap-y-3 mt-2 divide-y divide-solid">
+          <div className="flex justify-between pt-4">
+            <div>
+              <p className="text-sm">Message:</p>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <button className="self-end text-red-500 font-semibold hover:underline">Delete</button>
           </div>
-          <div className="bg-white px-2 py-3 rounded-sm shadow-sm">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur error deserunt distinctio.</p>
+          <div className="flex justify-between pt-4">
+            <div>
+              <p className="text-sm">Message:</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, libero voluptate sit distinctio quisquam impedit suscipit laudantium beatae ex sequi, voluptatem quos dignissimos debitis facilis dicta consequatur provident
+                nostrum, quam quas corporis vel! Impedit, distinctio officia! Nobis sit quos ab nostrum eos numquam.
+              </p>
+            </div>
+            <button className="self-end text-red-500 font-semibold hover:underline">Delete</button>
           </div>
-          <div className="bg-white px-2 py-3 rounded-sm shadow-sm">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet totam rem excepturi quam facilis ullam pariatur voluptates. Perspiciatis excepturi repellat aperiam alias sequi sapiente expedita omnis quam vitae repellendus?
-            </p>
+          <div className="flex justify-between pt-4">
+            <div>
+              <p className="text-sm">Message:</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic perferendis alias natus, doloremque rem suscipit ratione quisquam in. Consequatur quod incidunt eveniet. Explicabo ducimus omnis sequi amet ex corporis quaerat.
+                Quae, quia.
+              </p>
+            </div>
+            <button className="self-end text-red-500 font-semibold hover:underline">Delete</button>
+          </div>
+          <div className="flex justify-between pt-4">
+            <div>
+              <p className="text-sm">Message:</p>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. A perspiciatis, consectetur, minus quod voluptatum provident, praesentium facilis sint blanditiis quam officiis iusto id doloremque! Doloremque minus ducimus libero
+                at assumenda porro debitis optio cumque aliquid cum necessitatibus deserunt nostrum, corporis aspernatur laborum. Aliquam assumenda reiciendis esse ipsum, dicta odit magni! Saepe adipisci, amet distinctio odio modi iusto
+                natus rerum temporibus reiciendis non.
+              </p>
+            </div>
+            <button className="self-end text-red-500 font-semibold hover:underline">Delete</button>
+          </div>
+          <div className="flex justify-between pt-4">
+            <div>
+              <p className="text-sm">Message:</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate mollitia quam eos sint corporis.</p>
+            </div>
+            <button className="self-end text-red-500 font-semibold hover:underline">Delete</button>
           </div>
         </div>
       </section>
