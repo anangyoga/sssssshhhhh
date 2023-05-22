@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <main>
-      <Navbar setIsAuth={setIsAuth} />
+      <Navbar isAuth={isAuth} setIsAuth={setIsAuth} />
       {!isAuth ? <Homepage /> : <Dashboard />}
     </main>
   );

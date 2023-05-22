@@ -1,10 +1,10 @@
 import { auth, provider } from "../firebase-config";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signOut } from "firebase/auth";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 
-const Navbar = ({ setIsAuth }) => {
+const Navbar = ({ isAuth, setIsAuth }) => {
   const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
@@ -15,12 +15,24 @@ const Navbar = ({ setIsAuth }) => {
     }
   };
 
+  const singOutAdmin = async () => {
+    await signOut(auth);
+    cookies.remove("authentication-token");
+    setIsAuth(false);
+  };
+
   return (
     <nav className="flex sm:justify-end justify-center bg-green-400 py-2">
       <div className="mr-10 flex gap-x-5 text-sm text-white font-semibold">
-        <button onClick={signInWithGoogle} className="bg-white/40 rounded-sm px-2 py-1 hover:opacity-80">
-          Log In
-        </button>
+        {isAuth ? (
+          <button onClick={singOutAdmin} className="bg-white/40 rounded-sm px-2 py-1 hover:opacity-80">
+            Log Out
+          </button>
+        ) : (
+          <button onClick={signInWithGoogle} className="bg-white/40 rounded-sm px-2 py-1 hover:opacity-80">
+            Log In
+          </button>
+        )}
       </div>
     </nav>
   );
