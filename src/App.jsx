@@ -1,8 +1,10 @@
 import { useState } from "react";
-import Dashboard from "./components/Dashboard";
-import Homepage from "./components/Homepage";
 import Navbar from "./components/Navbar";
 import Cookies from "universal-cookie";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import AdminPage from "./pages/AdminPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const cookies = new Cookies();
 
@@ -10,10 +12,13 @@ const App = () => {
   const [isAuth, setIsAuth] = useState(cookies.get("authentication-token"));
 
   return (
-    <main>
+    <Router>
       <Navbar isAuth={isAuth} setIsAuth={setIsAuth} />
-      {!isAuth ? <Homepage /> : <Dashboard />}
-    </main>
+      <Routes>
+        {!isAuth ? <Route path="/" element={<HomePage />} /> : <Route path="/admin" element={<AdminPage />} />}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Router>
   );
 };
 

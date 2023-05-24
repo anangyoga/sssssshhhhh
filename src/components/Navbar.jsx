@@ -1,15 +1,19 @@
 import { auth, provider } from "../firebase-config";
 import { signInWithPopup, signOut } from "firebase/auth";
 import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
 
 const cookies = new Cookies();
 
 const Navbar = ({ isAuth, setIsAuth }) => {
+  const navigate = useNavigate();
+
   const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
       cookies.set("authentication-token", result.user.refreshToken);
       setIsAuth(true);
+      navigate("/admin");
     } catch (error) {
       console.log(error);
     }
@@ -19,6 +23,7 @@ const Navbar = ({ isAuth, setIsAuth }) => {
     await signOut(auth);
     cookies.remove("authentication-token");
     setIsAuth(false);
+    navigate("/");
   };
 
   return (
