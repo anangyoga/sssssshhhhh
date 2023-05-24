@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import LogoIcon from "../assets/message.svg";
 import { db } from "../firebase-config";
-import { getDocs, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from "firebase/firestore";
 
 const Header = () => {
   const [dataMessages, setDataMessages] = useState([]);
@@ -10,13 +10,14 @@ const Header = () => {
 
   const databaseRef = collection(db, "messages");
 
-  const fetchMessages = async () => {
-    const messages = await getDocs(databaseRef);
-    setDataMessages(messages.docs.map((message) => ({ ...message.data(), id: message.id })));
-  };
-
   useEffect(() => {
-    fetchMessages();
+    const queryDatabase = query(databaseRef, orderBy("createdAt"));
+    const unsubscribe = onSnapshot(queryDatabase, (snapshot) => {
+      let messages = [];
+      snapshot.forEach((doc) => messages.push({ ...doc.data(), id: doc.id }));
+      setDataMessages(messages);
+    });
+    return () => unsubscribe();
   }, []);
 
   const handleInput = async (e) => {
@@ -31,11 +32,11 @@ const Header = () => {
       });
 
       setInputMessage("");
-      fetchMessages();
     } catch (error) {
       console.error(error);
     }
   };
+
   return (
     <>
       <section className="flex flex-col gap-y-6 max-w-xl py-6 sm:mx-auto bg-gray-100 shadow-md rounded-sm my-3 mx-2">
