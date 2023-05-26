@@ -4,7 +4,7 @@ import Cookies from "universal-cookie";
 import { auth } from "../firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
 import { db } from "../firebase-config";
-import { collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, query, orderBy, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 
 const DataContext = createContext();
 
@@ -52,7 +52,11 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  return <DataContext.Provider value={{ isAuth, setIsAuth, isUserLoggedIn, handleInput, dataMessages, inputMessage, setInputMessage }}>{children}</DataContext.Provider>;
+  const deleteMessage = async (id) => {
+    await deleteDoc(doc(db, "messages", id));
+  };
+
+  return <DataContext.Provider value={{ isAuth, setIsAuth, isUserLoggedIn, handleInput, dataMessages, inputMessage, setInputMessage, deleteMessage }}>{children}</DataContext.Provider>;
 };
 
 export const StoreContext = () => {

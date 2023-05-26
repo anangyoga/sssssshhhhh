@@ -1,7 +1,7 @@
 import { StoreContext } from "../context/dataContext";
 
 const Dashboard = () => {
-  const { dataMessages } = StoreContext();
+  const { dataMessages, deleteMessage } = StoreContext();
   return (
     <section className="mx-auto my-2 max-w-7xl px-5">
       <h2 className="text-lg font-semibold my-3">Dashboard</h2>
@@ -12,7 +12,9 @@ const Dashboard = () => {
               <p className="text-sm">Message:</p>
               <p>{data.message}</p>
             </div>
-            <button className="self-end text-red-500 font-semibold hover:underline">Delete</button>
+            <button onClick={() => deleteMessage(data.id)} className="self-end text-red-500 font-semibold hover:underline">
+              Delete
+            </button>
           </div>
         ))}
       </div>
