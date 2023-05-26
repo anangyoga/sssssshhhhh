@@ -11,7 +11,7 @@ const Header = () => {
   const databaseRef = collection(db, "messages");
 
   useEffect(() => {
-    const queryDatabase = query(databaseRef, orderBy("createdAt"));
+    const queryDatabase = query(databaseRef, orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(queryDatabase, (snapshot) => {
       let messages = [];
       snapshot.forEach((doc) => messages.push({ ...doc.data(), id: doc.id }));
@@ -26,12 +26,12 @@ const Header = () => {
     if (inputMessage === "") return;
 
     try {
+      setInputMessage("");
+
       await addDoc(databaseRef, {
         message: inputMessage.trim(),
         createdAt: serverTimestamp(),
       });
-
-      setInputMessage("");
     } catch (error) {
       console.error(error);
     }
