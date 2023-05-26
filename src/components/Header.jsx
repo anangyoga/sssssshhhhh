@@ -1,41 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
 import LogoIcon from "../assets/message.svg";
-import { db } from "../firebase-config";
-import { collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from "firebase/firestore";
+import { StoreContext } from "../context/dataContext";
 
 const Header = () => {
-  const [dataMessages, setDataMessages] = useState([]);
-  const [inputMessage, setInputMessage] = useState("");
-
-  const databaseRef = collection(db, "messages");
-
-  useEffect(() => {
-    const queryDatabase = query(databaseRef, orderBy("createdAt", "desc"));
-    const unsubscribe = onSnapshot(queryDatabase, (snapshot) => {
-      let messages = [];
-      snapshot.forEach((doc) => messages.push({ ...doc.data(), id: doc.id }));
-      setDataMessages(messages);
-    });
-    return () => unsubscribe();
-  }, []);
-
-  const handleInput = async (e) => {
-    e.preventDefault();
-
-    if (inputMessage === "") return;
-
-    try {
-      setInputMessage("");
-
-      await addDoc(databaseRef, {
-        message: inputMessage.trim(),
-        createdAt: serverTimestamp(),
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const { handleInput, dataMessages, inputMessage, setInputMessage } = StoreContext();
 
   return (
     <>

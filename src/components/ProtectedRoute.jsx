@@ -1,6 +1,8 @@
 import { Navigate } from "react-router-dom";
+import { StoreContext } from "../context/dataContext";
 
-const ProtectedRoute = ({ isUserLoggedIn, children }) => {
+const ProtectedRoute = ({ children }) => {
+  const { isUserLoggedIn } = StoreContext();
   if (!isUserLoggedIn) {
     return <Navigate to="/" />;
   }

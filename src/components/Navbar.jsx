@@ -2,10 +2,13 @@ import { auth, provider } from "../firebase-config";
 import { signInWithPopup, signOut } from "firebase/auth";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
+import { StoreContext } from "../context/dataContext";
 
 const cookies = new Cookies();
 
-const Navbar = ({ isAuth, setIsAuth }) => {
+const Navbar = () => {
+  const { isAuth, setIsAuth } = StoreContext();
+
   const navigate = useNavigate();
 
   const signInWithGoogle = async () => {
